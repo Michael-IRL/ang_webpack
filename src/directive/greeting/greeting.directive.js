@@ -1,4 +1,5 @@
 import angular from 'angular';
+import './greeting.css';
 
 const greeting = () => {
   return {
@@ -6,7 +7,7 @@ const greeting = () => {
     scope: {
       name: '=',
     },
-    template: '<h1>Greeting {{name}}</h1>',
+    template: '<h1 class="red">Greeting {{name}}</h1>',
   };
 };
 

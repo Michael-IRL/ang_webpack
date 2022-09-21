@@ -1,6 +1,6 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
-import greeting from '../../directive/greeting.directive';
+import greeting from '../../directive/greeting';
 import httpUser from '../../service/httpUsers.service';
 
 import routing from './home.routes';
