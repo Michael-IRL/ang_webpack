@@ -5,4 +5,14 @@ import home from './controller/home';
 import user from './controller/user';
 import person from './component/person';
 
-angular.module('app', [uirouter, home, user, person]).config(routing);
+import preLoad from './utility/preLoad.functions';
+
+angular
+  .module('app', [
+    uirouter,
+    home, 
+    user, 
+    person,
+  ])
+  .config(routing)
+  .run(preLoad);
