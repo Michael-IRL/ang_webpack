@@ -10,7 +10,7 @@ function customDateInputDirective() {
     return {
         restrict: 'A',
         require: 'ngModel',
-        replace: false,
+        replace: true,
         scope: {
             model: '=ngModel',
             required: '=?',
@@ -19,7 +19,6 @@ function customDateInputDirective() {
         },
         controller: customDateController,
         template: customDateTemplate,
-        /*template: require('./template.html'),*/
         link: function (scope, element, attrs, modelCtrl){                
                 scope.elementName = attrs.name;
                 scope.modelCtrl = modelCtrl;                           

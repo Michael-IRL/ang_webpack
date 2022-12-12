@@ -1,11 +1,21 @@
+export function homeController($rootScope, $scope, customValidatorFactory, httpUser) {
+  this.name = 'World';
+  this.number = 5;
+  this.staff = [];
+  this.staffSelected = "Select name";
 
-
-export function homeController($rootScope, $scope, customValidatorFactory) {
-  $scope.name = 'World';
-  $scope.number = 5;
-  $scope.changeName = () => {
-    $scope.name = 'angular-tips';
+  this.changeName = () => {
+    this.name = 'angular-tips';
   };
+
+  this.$onInit = function(){
+    console.log('init');
+    httpUser.getUsers().then((response)=>{
+      if(response){
+        this.staff = response.data;
+      }
+    })    
+  }
 
   let numberValidation = customValidatorFactory.create(
     'numberValidation',
@@ -18,12 +28,12 @@ export function homeController($rootScope, $scope, customValidatorFactory) {
     startDateIsValid
   );
 
-  $scope.numberValidation = [numberValidation]
+  this.numberValidation = [numberValidation]
 
-  $scope.startDateValidation = [startDateValidation]
+  this.startDateValidation = [startDateValidation]
 
   function numberValidationTrigger(){
-    return $scope.number
+    return this.number
   }
 
   function numberIsValid(value,elem){
@@ -31,22 +41,22 @@ export function homeController($rootScope, $scope, customValidatorFactory) {
   }
 
   function startDateTrigger(){
-    return $scope.startDate;
+    return this.startDate;
   }
   
   function startDateIsValid(value,elem){
-    return !!$scope.startDate;
+    return !!this.startDate;
   }
   
 
 
-  // $scope.dateValidation = [customValidatorFactory.create('custom', [function () { return $rootScope.covers.startDate; }], function (value, elem) {
+  // this.dateValidation = [customValidatorFactory.create('custom', [function () { return $rootScope.covers.startDate; }], function (value, elem) {
   //   if (!$rootScope.getIsVisible('ChooseStart')) {
   //     return true;
   //   }
 
-  //   return $rootScope.covers.startDate >= $scope.minDate && $rootScope.covers.startDate <= $scope.maxDate;
+  //   return $rootScope.covers.startDate >= this.minDate && $rootScope.covers.startDate <= this.maxDate;
   // })];
 }
 
-homeController.$inject = ['$rootScope','$scope','CustomValidatorFactory'];
+homeController.$inject = ['$scope','CustomValidatorFactory','httpUser'];

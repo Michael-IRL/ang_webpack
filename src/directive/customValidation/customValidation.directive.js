@@ -59,21 +59,20 @@ const refreshTriggers = function (validationHandler, $scope, validations, trigge
 
 function customValidation() {    
     return {
-        terminal: true,
         restrict: 'A',
         require: 'ngModel',
-        priority: 0,
+        priority: 1,
         link: function ($scope, elem, attrs, ngModel) {
             var validations = $scope.$eval(attrs.customValidation);
             var triggers = [];
             var target = getTarget(elem);
-            debugger;
+            
             var validationHandler = function (value, dispatchedBy) {
-                    debugger;
+                    
                     /*
                     @type validity: [<Object>{<String name>, <Boolan isValid<Func(value)>>, <Object formattedValue>, notifiers:[<Object>]}]
                     */
-                   debugger;
+                   
                     var formattedValue = undefined;
                     (validations || []).forEach(function (validity) {
 

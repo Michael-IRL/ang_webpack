@@ -1,6 +1,5 @@
 CustomDateInputController.$inject = ['$scope', '$attrs', '$filter', '$timeout'] 
 function CustomDateInputController($scope, $attrs, $filter, $timeout) {
-  debugger;
   this.elementName = $attrs.name
   $scope.elementName = $attrs.name;
   var lastValidDay = '',
@@ -8,7 +7,6 @@ function CustomDateInputController($scope, $attrs, $filter, $timeout) {
       lastValidYear = '';
 
   $scope.verifyDay = function (nval) {
-    debugger;
       if (!!nval && (isNaN(nval) || Number(nval) < 0 || Number(nval) > 31)) {
           $scope.day = lastValidDay;
       }
@@ -21,7 +19,6 @@ function CustomDateInputController($scope, $attrs, $filter, $timeout) {
   };
 
   $scope.verifyMonth = function (nval) {
-    debugger;
       if (!!nval && (isNaN(nval) || Number(nval) < 0 || Number(nval) > 12)) {
           $scope.month = lastValidMonth;
       }
@@ -34,7 +31,6 @@ function CustomDateInputController($scope, $attrs, $filter, $timeout) {
   };
 
   $scope.verifyYear = function (nval) {
-    debugger;
       if (validateDate())
           lastValidYear = nval;
       if (!!nval && (isNaN(nval) || Number(nval) < 0)) {
@@ -43,7 +39,6 @@ function CustomDateInputController($scope, $attrs, $filter, $timeout) {
   };
 
   $scope.$watch('model', function (nval, oval) {
-    debugger;
       if (nval == oval) return;
       setDate(nval);
   });
@@ -81,6 +76,7 @@ function CustomDateInputController($scope, $attrs, $filter, $timeout) {
       if (!!day && !isNaN(day) && (Number(day) > 0 || day.length == 2) && !!month && !isNaN(month) && (Number(month) > 0 || month.length == 2) && !!year && !isNaN(year) && Number(year) > 1500) {
           var dateString = [$scope.year, $scope.month, $scope.day].join('/');
           if (!isNaN(Date.parse(dateString))) {
+              debugger;
               var date = new Date(Number(year), Number(month) - 1, Number(day));
               if ((!$scope.minAvailableDate || $scope.minAvailableDate.getTime() <= date.getTime()) && (!$scope.maxAvailableDate || $scope.maxAvailableDate.getTime() >= date.getTime())) {
                   if (!$scope.model || $scope.model.getTime() != date.getTime()) $scope.model = date;

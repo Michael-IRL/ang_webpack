@@ -1,0 +1,6 @@
+<form name="form" role="form">
+  <label>Name:
+  <input type="text" ng-model="user.name" required ng-model-options="{ debounce: 250 }" /></label><br />
+  <button type="button" class="btn" onclick="return false" ng-click="submitInformation()" tabindex="0">Next</button>
+</form>
+<pre>username = "{{user.name}}"</pre>

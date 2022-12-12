@@ -1,16 +1,34 @@
-<div ng-controller="HomeController">
-    <h3 class="red">Hello {{name}}</h3>
+<style>
+    .select2-container {
+        width: 100px !important;
+    }
+</style>
+<div>
+    <h3 class="red">Hello {{home.name}}</h3>
     <a ui-sref="user">user</a><br>
     <a ui-sref="person">person</a><br>
+    <a ui-sref="form">form</a>
 
     <button id="testButton">test button</button><br>
 
     <greeting name="name"></greeting>
-    <button ng-click="changeName()">Change Name</button>
+    <button ng-click="home.changeName()">Change Name</button>
 
     <br><br>
-    <div id="startDate" name="startDate" custom-date-input data-ng-model="$scope.startDate" ></div>
-    <!--<custom-date-input id="startDate" name="startDate" data-ng-model="$scope.startDate" custom-validation="startDateValidation" />-->
+    <div id="startDate" name="startDate" custom-date-input data-ng-model="$rootScope.startDate" custom-validation="startDateValidation" ></div>
+    <!--<custom-date-input id="startDate" name="startDate" data-ng-model="startDate" custom-validation="startDateValidation" />-->
     <br><br>
-    <input type="text" name="myNumber" ng-model="number"/>
+    <input type="text" name="myNumber" ng-model="number"/><br>
+    <select 
+      name="update" 
+      id="update"  
+      data-placeholder="select" 
+      ng-options="c.name for c in home.staff"
+      ng-model="home.staffSelected"
+      required="required" 
+      class="form-control"
+      js-select2
+    >
+      <option selected >select name</option>
+    </select>
 </div>

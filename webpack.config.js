@@ -38,13 +38,20 @@ module.exports = {
           exposes: ["$", "jQuery"],
         },
       },
+      {
+        test: require.resolve('select2'),
+        loader: 'expose-loader',
+        options: {
+          exposes: ['select2'],
+        },
+      },
     ],
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery'
-    })
-  ],
+  // plugins: [
+  //   new CleanWebpackPlugin(),
+  //   new webpack.ProvidePlugin({
+  //     $: 'jquery',
+  //     jQuery: 'jquery'
+  //   })
+  // ],
 };
